@@ -30,7 +30,6 @@
 clear; close all;
 
 
-
 %% Set Parameters
 addpath(fullfile('C:\Program Files\MATLAB\R2017a\toolbox','Software','eeglab14_1_2b')) %% Add eeglab to the path
 subjectPool={'01','02','03','04','05','06','07','08','09','10'};
@@ -45,16 +44,13 @@ highPassName_1Hz = '_1Hz.set';
 filterOrder_01Hz = 41250; % set the filter order based on your sampling rate
 highPassFilter_01Hz =0.02;
 highPassName_01Hz = '_01Hz.set';
-
 rawDataName = 'rawFile';
 
-% start EEGLAB
+% Start EEGLAB
 [ALLEEG EEG CURRENTSET ALLCOM] = eeglab; 
 
 %% Convert All Subjects' Raw data to EEGLAB format
 convertRawDataFormat(subjectPool,pwd);
-
-
 
 
 %% Manual Loop Starts
@@ -63,7 +59,7 @@ subjectNum = 1; % Manuel loop for visual inspection
 mainSubjectFolder =  fullfile(pwd, sprinf('Subject%s',subjectPool{subjectNum}));
 dataFolder =fullfile(mainSubjectFolder,'rawDataFolder');
 
-% load EEG data
+% Load EEG data
 EEG = pop_loadset('filename',strcat(rawDataName,'.set'),'filepath',dataFolder);
 [ALLEEG, EEG, CURRENTSET] = eeg_store( ALLEEG, EEG, 0 );
 
@@ -74,11 +70,9 @@ channel2interpolate =  [ ]; % list noisy channels
 
 
 %% Initial Cleaning: Interpolate the noisy channels, remove ECG channel, Re-reference, Downsample
-
 inputDataFileName = strcat(rawDataName,'.set');
 outputDataFileName = strcat(rawDataName,'_initprep.set');
 [EEG, ALLEEG] =initialPreprocessing(channel2interpolate, dataFolder,inputDataFileName, outputDataFileName);
-
 
 
 %% Prepare 1 Hz Filtered Data and run ICA on 1 Hz filtred data
@@ -97,7 +91,6 @@ pop_eegplot( EEG, 1, 1, 1);
 epochs2remove =[]; % the list of noisy epochs
 
 % Remove noisy epochs
-
 if ~isempty(epochs2remove)
     removeNoisyEpochs(ALLEEG, dataFolder,inputDataFileName,epochs2remove);
 end
@@ -106,11 +99,9 @@ end
 ICAComp = runICA(ALLEEG, dataFolder,inputDataFileName);
 
 
-
 %% Prepare 0.01 Hz filtered data
 
 % Filter the raw data to 0.01 Hz
-
 inputDataFileName = strcat(rawDataName,'.set');
 filterData(ALLEEG, dataFolder,inputDataFileName, rawDataName, highPassFilter_01Hz, filterOrder_01Hz,highPassName_01Hz);
 
@@ -121,12 +112,10 @@ if ~isempty(epochs2remove)
 end
 
 % Map ICA weights of 1 Hz data to 0.01 Hz Data
-
 [ALLEEG EEG] = mapICAweights(ALLEEG, dataFolder,inputDataFileName,ICAComp);
 
 
 %% Visual Inspection: Choose Artifactual ICs
-
 pop_selectcomps(EEG, [1:numOfChannels] ) % plot ICA components
 pop_eegplot( EEG, 0, 1, 1); % plot component timecourses
 pop_eegplot( EEG, 1, 1, 1); % plot data
@@ -140,9 +129,6 @@ if ~isempty(components2remove)
     [ALLEEG EEG CURRENTSET] = pop_newset(ALLEEG, EEG, 1,'savenew',fullfile(dataFolder, outputFileName),'gui','off');
 end
 
-
 %% Visual Inspection: After ICA cleaning look at the data plot again and if necessary remove more components
 pop_eegplot( EEG, 0, 1, 1);
 pop_selectcomps(EEG, [1:numOfChannels-size(components2remove,2)] );
-
-
