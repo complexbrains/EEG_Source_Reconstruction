@@ -51,11 +51,11 @@ Freesurfer gives you more flexibility for the choices of surface-based atlases, 
 
 - So voila, you got the segmentation done and dusted for you! The list and the content of the output files could be found [here](https://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllOutputFiles). Mainly the ones you might be interested in could be listed as 
 
-*/mri/aseg.mgz: subcortical segmentation volume
-*/mri/wm.mgz: white matter mask
-*/mri/brainmask.mgz: skull-stripped volume
-*/surf/?h.white: white surface between white matter and gray matter (where ?h stands for lh or rh)
-*/surf/?h.pial: pial surface between gray matter and CSF (where * stands for sub-<participant_label>_ses-<session_label>) 
+      - /mri/aseg.mgz: subcortical segmentation volume
+      - /mri/wm.mgz: white matter mask
+      - /mri/brainmask.mgz: skull-stripped volume
+      - /surf/?h.white: white surface between white matter and gray matter (where ?h stands for lh or rh)
+      - /surf/?h.pial: pial surface between gray matter and CSF (where * stands for sub-<participant_label>_ses-<session_label>) 
 
 [source](http://www.clinica.run/doc/Pipelines/T1_FreeSurfer/)
 
