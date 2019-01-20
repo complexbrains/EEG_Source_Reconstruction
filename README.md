@@ -5,7 +5,7 @@ Source reconstruction in EEG requires some certain steps to be completed, before
 
 I used BrainSuit and Freesurfer. BrainSuite is easy to implement and run, however the number of scout you obtain is limited to 66 unless you would like to define your own scouts. You can also define your customized scouts in BrainSuite, however it requires a careful handling, [here](http://brainsuite.org/video-tutorials/custom-atlas/) is the tutorial of it. 
 
-Freesurfer gives you more flexibilty in the joices of surface-based atlases, ranging from Desikan-Killiany, Destrieux, Brodmann, Mindboggle. If you want to use Freesurfer, here are the commands you have to run in your system terminal (after you install Freesurfer) to get the surface extraction going. You can either use dicom or nifti files at the start, however you will need to convert them to .mgz format for Freesurfer to work on that. 
+Freesurfer gives you more flexibilty for the choices of surface-based atlases, ranging from Brodmann, Destrieux, Desikan-Killiany,  Mindboggle. If you want to use Freesurfer, the commands you simply start Freesurfer to run in your system terminal (after you install Freesurfer) to get the surface extraction going are listed below. You can either use dicom or nifti files at the start, however you will need to convert them to .mgz format for Freesurfer to work on them.
 
 - If your shell environment is csh/tcsh then you should start defining the folder where the Freesurfer and your structural data file sits.  
 
