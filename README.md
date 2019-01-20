@@ -27,7 +27,7 @@ Freesurfer gives you more flexibilty in the joices of surface-based atlases, ran
 
 - If your data is in nifti format, then you can convert your nifti files to .mgz format via mri_convert command.
 
-      *mri_convert --in_type nii --out_type mgz --input_volume /data/freesurfer/subject1/structural/subject1_structural_1.nii --                output_volume $SUBJECTS_DIR/01.mgz*
+      *mri_convert --in_type nii --out_type mgz --input_volume /data/freesurfer/subject1/structural/subject1_structural_1.nii --      output_volume $SUBJECTS_DIR/01.mgz*
 
 - And now you are good to go to run the construction. It will take some time depending on the processor of your pc of course, but estimated time might be a day per person in average.
 
