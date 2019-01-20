@@ -39,7 +39,7 @@ Freesurfer gives you more flexibilty for the choices of surface-based atlases, r
 
             tkmedit <subjectID> <subject1.mgz>
 
-- And now you are good to go to run the construction. The parcellation process contains many steps, but don't worry, we already have **recon-all** batched script to help us to run all those steps smoothly and even realizing it. You can find more about those steps from [this very page] (http://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllDevTable). The only thing you need to do is to feed the parameters and run it. However you can still modify the code to remove the steps you think they are unneccessary for your own purpose. Depending on the processing steps, the whole pipeline will take some time depending on the processor of your pc of course, but estimated time might be a day per person in average.
+- And now you are good to go to run the construction. The parcellation process contains many steps, but don't worry, we already have **recon-all** batched script to help us to run all those steps smoothly and even realizing it. You can find more about those steps from [this very page](http://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllDevTable). The only thing you need to do is to feed the parameters and run it. However you can still modify the code to remove the steps you think they are unneccessary for your own purpose. Depending on the processing steps, the whole pipeline will take some time depending on the processor of your pc of course, but estimated time might be a day per person in average.
 
       recon-all -all -subjid <subject_id>
       
