@@ -3,11 +3,11 @@
 
 Source reconstruction in EEG requires some certain steps to be completed, before the estimation of the sources. If you have your structural data of each of your subjects, or if you will use template anatomical data, then the first thing you need to do is to extract the cortical segmentation from a T1 MRI.
 
-I used BrainSuit and Freesurfer. BrainSuite is easy to implement and run, however the number of scout you obtain is limited to 66 unless you would like to define your own scouts. You can also define your customized scouts in BrainSuite, however it requires a careful handling, [here](http://brainsuite.org/video-tutorials/custom-atlas/) is the tutorial of it. 
+I used BrainSuit and Freesurfer. BrainSuite is easy to implement and run, however, the number of scouts you obtain is limited to 66 unless you would like to define your own scouts. You can also define your customized scouts in BrainSuite, however, it requires careful handling, [here](http://brainsuite.org/video-tutorials/custom-atlas/) is the tutorial of it. 
 
-Freesurfer gives you more flexibilty for the choices of surface-based atlases, ranging from Brodmann, Destrieux, Desikan-Killiany,  Mindboggle. If you want to use Freesurfer, the commands you simply start Freesurfer to run in your system terminal (after you install Freesurfer) to get the surface extraction going are listed below. You can either use dicom or nifti files at the start, however you will need to convert them to .mgz format for Freesurfer to work on them.
+Freesurfer gives you more flexibility for the choices of surface-based atlases, ranging from Brodmann, Destrieux, Desikan-Killiany,  Mindboggle. If you want to use Freesurfer, the commands you simply start Freesurfer to run in your system terminal (after you install Freesurfer) to get the surface extraction going are listed below. You can either use dicom or nifti files at the start, however, you will need to convert them to .mgz format for Freesurfer to work on them.
 
-- First check whether you have Freesurfer installed on your system via typing the first command to your terminal and if so use the second command to load Freesurfer.
+- First, check whether you have Freesurfer installed on your system via typing the first command to your terminal and if so use the second command to load Freesurfer.
 
             module avail
             module load Freesurfer
@@ -25,7 +25,7 @@ Freesurfer gives you more flexibilty for the choices of surface-based atlases, r
       export SUBJECTS_DIR=/.../data/freesurfer/subject1/structural
       source $FREESURFER_HOME/FreeSurferEnv.sh
 
-- Now it is time to convert your **dicom** structural file to **.mgz** format. For that you will give the only the first structural image on the ordered list then the command will pick all the rest of the structural dicom files to process. Subject Id is arbitrary, but it should be meaningful since the below command will create a folder named with that Id and put all the converted output files into that folder. First line for running a single subjects data, the second line is to run multuple subjects reconstruction in specified order.
+- Now it is time to convert your **dicom** structural file to **.mgz** format. For that you will give the only the first structural image on the ordered list then the command will pick all the rest of the structural dicom files to process. Subject Id is arbitrary, but it should be meaningful since the below command will create a folder named with that Id and put all the converted output files into that folder. The first line for running a single subjects data, the second line is to run multiple subjects reconstruction in the specified order.
 
       recon-all -i /data/freesurfer/subject1/structural/subject1_structural_1.dcm -autorecon1 -subjid <subjectID>
       recon-all -i /data/freesurfer/subject1/structural/subject1_structural_1.dcm -i /data/freesurfer/subject2/structural/subject2_structural_1.dcm-autorecon1 -subjid < the name of the output folder>
@@ -39,11 +39,11 @@ Freesurfer gives you more flexibilty for the choices of surface-based atlases, r
 
             tkmedit <subjectID> <subject1.mgz>
 
-- And now you are good to go to run the construction. The parcellation process contains many steps, but don't worry, we already have **recon-all** batched script to help us to run all those steps smoothly and even realizing it. You can find more about those steps from [this very page](http://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllDevTable). The only thing you need to do is to feed the parameters and run it. However you can still modify the code to remove the steps you think they are unneccessary for your own purpose. Depending on the processing steps, the whole pipeline will take some time depending on the processor of your pc of course, but estimated time might be a day per person in average.
+- And now you are good to run the construction. The parcellation process contains many steps, but don't worry, we already have **recon-all** batched script to help us to run all those steps smoothly and even realizing it. You can find more about those steps from [this very page](http://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllDevTable). The only thing you need to do is to feed the parameters and run it. However, you can still modify the code to remove the steps you think they are unnecessary for your own purpose. Depending on the processing steps, the whole pipeline will take some time depending on the processor of your pc of course, but estimated time might be a day per person on average.
 
       recon-all -all -subjid <subject_id>
       
- - If you want to convert the resulting .mgz files to nifti format for further use, then please use the below command. Here the parameter **--out_orientation RAS** is to flip your structural files to match with your functionals. In source reconstruction step this might not carry an importance but if you will use this segmentation later in your fMRI analysis it is better to use this paramater while you convert between files. 
+ - If you want to convert the resulting .mgz files to nifti format for further use, then please use the below command. Here the parameter **--out_orientation RAS** is to flip your structural files to match with your functionals. In source reconstruction step this might not carry importance but if you will use this segmentation later in your fMRI analysis it is better to use this parameter while you convert between files. 
  
              mri_convert --out_orientation RAS  -rt nearest --reslice_like <reference.nii or reference.nii.gz> <subject1_output.mgz> <subject1_output.nii>
 
