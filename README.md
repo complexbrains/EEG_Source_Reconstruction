@@ -9,8 +9,8 @@ Freesurfer gives you more flexibility for the choices of surface-based atlases, 
 
 - First, check whether you have Freesurfer installed on your system via typing the first command to your terminal and if so use the second command to load Freesurfer.
 
-            module avail
-            module load Freesurfer
+         module avail
+         module load Freesurfer
 
 - If your shell environment is C shell (csh) or enhanced C shell (tcsh) then you should start defining the folder where the Freesurfer and your structural data file sits. If you use setenv (setting environmental variables) command, you will not need to source and set the variables each time you open the terminal. You can also do that editing the binary files for each different shell types manually. SUBJECTS_DIR folder is where you subject files are stored. You can either keep all the subject files in one folder or in separate folders.
 
