@@ -31,7 +31,7 @@ Freesurfer gives you more flexibilty in the joices of surface-based atlases, ran
 
 - And now you are good to go to run the construction. It will take some time depending on the processor of your pc of course, but estimated time might be a day per person in average.
 
-      *recon-all -all -subjid <subject_id>
+      recon-all -all -subjid <subject_id>
 
 So you are good! Then Brainstorm will pick the whole output folder when you define the anatomy for your subject. More updates on this topic will come soon... 
 
