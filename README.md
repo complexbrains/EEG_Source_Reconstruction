@@ -9,8 +9,8 @@ Freesurfer gives you more flexibility for the choices of surface-based atlases, 
 
 - First, check whether you have Freesurfer installed on your system via typing the first command to your terminal and if so use the second command to load Freesurfer.
 
-         module avail
-         module load Freesurfer
+      module avail
+      module load Freesurfer
 
 - If your shell environment is C shell (csh) or enhanced C shell (tcsh) then you should start defining the folder where the Freesurfer and your structural data file sits. If you use setenv (setting environmental variables) command, you will not need to source and set the variables each time you open the terminal. You can also do that editing the binary files for each different shell types manually. SUBJECTS_DIR folder is where you subject files are stored. You can either keep all the subject files in one folder or in separate folders.
 
@@ -37,7 +37,7 @@ Freesurfer gives you more flexibility for the choices of surface-based atlases, 
 
 -If you want to visualize the resulting .mgz file use the below command please. 
 
-            tkmedit <subjectID> <subject1.mgz>
+      tkmedit <subjectID> <subject1.mgz>
 
 - And now you are good to run the construction. The parcellation process contains many steps, but don't worry, we already have **recon-all** batched script to help us to run all those steps smoothly and even realizing it. You can find more about those steps from [this very page](http://surfer.nmr.mgh.harvard.edu/fswiki/ReconAllDevTable). The only thing you need to do is to feed the parameters and run it. However, you can still modify the code to remove the steps you think they are unnecessary for your own purpose. Depending on the processing steps, the whole pipeline will take some time depending on the processor of your pc of course, but estimated time might be a day per person on average.
 
@@ -45,7 +45,7 @@ Freesurfer gives you more flexibility for the choices of surface-based atlases, 
       
  - If you want to convert the resulting .mgz files to nifti format for further use, then please use the below command. Here the parameter **--out_orientation RAS** is to flip your structural files to match with your functionals. In source reconstruction step this might not carry importance but if you will use this segmentation later in your fMRI analysis it is better to use this parameter while you convert between files. 
  
-             mri_convert --out_orientation RAS  -rt nearest --reslice_like <reference.nii or reference.nii.gz> <subject1_output.mgz> <subject1_output.nii>
+       mri_convert --out_orientation RAS  -rt nearest --reslice_like <reference.nii or reference.nii.gz> <subject1_output.mgz> <subject1_output.nii>
 
 
 
