@@ -1,4 +1,13 @@
-# EEG_Source_Reconstruction
+
+
+* [EEG_Source_Reconstruction](#EEG_Source_Reconstruction)
+
+* [Source Connectivity Analysis](#Source_connectivity_analysis)
+
+
+
+
+### EEG Source Reconstruction
 
 
 Source reconstruction in EEG requires some certain steps to be completed, before the estimation of the sources. If you have your structural data of each of your subjects, or if you will use template anatomical data, then the first thing you need to do is to extract the cortical segmentation from a T1 MRI.
@@ -58,7 +67,22 @@ Freesurfer gives you more flexibility for the choices of surface-based atlases, 
        /surf/?h.pial: pial surface between gray matter and CSF (where * stands for sub-<participant_label>_ses-<session_label>) 
 
 
-Brainstorm will pick the whole output folder when you define the anatomy for your subject. More updates on this topic will come soon... 
+Brainstorm will pick the whole output folder when you define the anatomy for your subject.
+
+If you find the time period of segmentation with Freesurfer quite long, then I would suggest a new SPM based toolbox CAT12 which comes as a plugin to Brainstorm toolbox and run the whole segmentation more or less around an hour. So you can access informtion about CAT12 from [here](https://neuroimage.usc.edu/brainstorm/Tutorials/SegCAT12). It comes with many new atlases including fine resolutioned 7 and 17 network (100 - 1000 parcellation) Yeo and Schafer atlases, which makes your job pretty easier. 
+
+### Source Connectivity Analysis
+
+After the sources are reconstructed you will need to construct your connectivity matrices. The estimation of the connectivity between two EEG signal time series is prone to the spurious connections due to the effect of the volume conduction therefore a simple correlation between two time series might lead Type I error in your estimation of your connectivities if you would not eliminate the effect of the volume conduction. 
+
+
+There has been many different methods used so far in connectivity estimates in EEG, such as Phase Locking Value, Phase Lag Index, imagery part of the Coherencency, and phase slope index. Although each offer another aspects of eliminating the spurious connections or avoiding Type II errors occuring due to the processes blocking the volume conduction effect, each methods requires careful handling depending the type of the analysis you are aiming to pursue. 
+
+
+
+
+
+
 
 
 
